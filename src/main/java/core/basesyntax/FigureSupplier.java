@@ -1,0 +1,28 @@
+package core.basesyntax;
+import java.util.Random;
+
+public class FigureSupplier {
+    private static final int MAX_SIZE = 20;
+    private final Random random = new Random();
+    private final ColorSupplier colorSupplier = new ColorSupplier();
+
+    public AbstractFigure getRandomFigure() {
+        int figureType = random.nextInt(5);
+        Color color = colorSupplier.getRandomColor();
+
+        switch (figureType) {
+            case 0: return new Square(color, random.nextInt(MAX_SIZE) + 1);
+            case 1: return new Rectangle(color, random.nextInt(MAX_SIZE) + 1,
+                    random.nextInt(MAX_SIZE) + 1);
+            case 2: return new RightTriangle(color, random.nextInt(MAX_SIZE) + 1,
+                    random.nextInt(MAX_SIZE) + 1);
+            case 3: return new Circle(color, random.nextInt(MAX_SIZE) + 1);
+            default: return new IsoscelesTrapezoid(color, random.nextInt(MAX_SIZE) + 1,
+                    random.nextInt(MAX_SIZE) + 1, random.nextInt(MAX_SIZE) + 1);
+        }
+    }
+
+    public AbstractFigure getDefaultFigure() {
+        return new Circle(Color.GREEN, 10);
+    }
+}
