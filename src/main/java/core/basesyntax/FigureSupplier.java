@@ -7,9 +7,9 @@ public class FigureSupplier {
     private final Random random = new Random();
     private final ColorSupplier colorSupplier = new ColorSupplier();
 
-    public AbstractFigure getRandomFigure() {
+    public Figure getRandomFigure() {
         int figureType = random.nextInt(5);
-        Color color = colorSupplier.getRandomColor();
+        String color = colorSupplier.getRandomColor();
 
         switch (figureType) {
             case 0: return new Square(color, random.nextInt(MAX_SIZE) + 1);
@@ -23,7 +23,7 @@ public class FigureSupplier {
         }
     }
 
-    public AbstractFigure getDefaultFigure() {
-        return new Circle(Color.GREEN, 10);
+    public Figure getDefaultFigure() {
+        return new Circle(Color.WHITE.name(), 10);
     }
 }
